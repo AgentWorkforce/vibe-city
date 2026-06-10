@@ -29,7 +29,7 @@ export function BudgetGauge() {
   const spentPct = clamp((spent / goal) * 100, 0, 100);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-panel p-6 sm:p-10">
+    <div className="rounded-lg border border-white/10 bg-panel p-6 sm:p-10">
       <div className="grid gap-8 sm:grid-cols-3">
         <Stat label="Raised" value={formatUsd(raised)} accent="#ffc55c" />
         <Stat label="Burned" value={formatUsd(spent)} accent="#ff2e88" />

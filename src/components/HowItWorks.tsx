@@ -24,15 +24,15 @@ export function HowItWorks() {
   return (
     <div className="grid gap-6 sm:grid-cols-2">
       {STEPS.map((step, i) => (
-        <div key={step.title} className="rounded-2xl border border-white/10 bg-panel p-6">
-          <span className="font-neon text-sm text-gold/70">0{i + 1}</span>
+        <div key={step.title} className="rounded-lg border border-white/10 bg-panel p-6">
+          <span className="font-display text-sm font-bold tracking-[0.35em] text-gold/70">0{i + 1}</span>
           <h3 className="mt-2 font-display text-2xl font-black uppercase tracking-wide text-cream">
             {step.title}
           </h3>
           <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
         </div>
       ))}
-      <div className="rounded-2xl border border-gold/25 bg-panel p-6 sm:col-span-2">
+      <div className="rounded-lg border border-gold/25 bg-panel p-6 sm:col-span-2">
         <p className="text-center text-sm text-muted">
           The game repo:{" "}
           <a

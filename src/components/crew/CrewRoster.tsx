@@ -16,8 +16,8 @@ export function CrewRoster() {
           : "Assembling the crew…"}
       </p>
       <div className="space-y-8">
-        {agents.map((agent, i) => (
-          <DossierPanel key={agent.name} agent={agent} index={i} />
+        {agents.map((agent) => (
+          <DossierPanel key={agent.name} agent={agent} />
         ))}
       </div>
     </div>

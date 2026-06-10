@@ -36,7 +36,7 @@ export function LiveFeed() {
   const live = feed?.mode === "live";
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-[0_0_60px_rgba(255,46,136,0.07)]">
+    <div className="overflow-hidden rounded-lg border border-white/10 bg-panel shadow-[0_0_60px_rgba(255,46,136,0.07)]">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
         <span className="font-display text-lg font-bold uppercase tracking-widest text-cream">
           Workspace Feed

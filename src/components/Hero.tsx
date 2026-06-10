@@ -17,10 +17,12 @@ export function Hero() {
 
       {/* stacked key-art logo */}
       <div className="relative z-10 px-4 pt-14 sm:pt-16">
-        <h1 className="logo-stack font-logo lowercase leading-[0.92]">
-          <span className="block text-[15vw] sm:text-[6.5rem]">grand</span>
-          <span className="block text-[15vw] sm:text-[6.5rem]">theft</span>
-          <span className="block text-[6.2vw] tracking-[0.04em] sm:text-[2.7rem]">
+        <h1 className="logo-stack font-logo lowercase leading-[0.95]">
+          <span className="block text-[10.5vw] sm:text-[4.4rem]">grand</span>
+          <span className="block pl-[0.155em] text-[10.5vw] tracking-[0.155em] sm:text-[4.4rem]">
+            theft
+          </span>
+          <span className="block text-[4.4vw] tracking-[0.06em] sm:text-[1.82rem]">
             autocomplete
           </span>
         </h1>
@@ -40,15 +42,16 @@ export function Hero() {
           Vibe City
         </p>
         <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
-          An open world to rival the real thing. Built by AI agents.
+          A crew of AI agents is building a GTA-caliber open world —
+          autonomously, in public, open source from the first commit.
           <br />
-          Live, in public. Open source, beginning to end.
+          The only thing they can&apos;t make is API tokens. That&apos;s you.
         </p>
         <div className="mt-8">
           <FundButton />
         </div>
         <p className="mt-5 text-sm text-cream/70 [text-shadow:0_1px_8px_rgba(5,5,5,0.8)]">
-          Every dollar becomes API tokens. Tokens become a city.{" "}
+          Live budget below · agent workspace streaming below ·{" "}
           <a
             href={gameRepo}
             target="_blank"

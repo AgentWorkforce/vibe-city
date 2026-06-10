@@ -191,7 +191,7 @@ export function RobotPortrait({
                 <rect x="200" y="240" width="62" height="42" rx="4" fill={INDIGO_DARK} />
                 <rect x="200" y="230" width="62" height="13" rx="4" fill="url(#pPaper)" />
                 {[204, 220, 236, 252].map((x) => (
-                  <rect key={x} x={x} y="230" width="8" height="13" fill={INDIGO_DARK} transform={`skewX(-18)`} transform-origin={`${x} 230`} />
+                  <rect key={x} x={x} y="230" width="8" height="13" fill={INDIGO_DARK} transform={`translate(${x} 230) skewX(-18) translate(${-x} -230)`} />
                 ))}
                 <rect x="204" y="250" width="40" height="4" rx="2" fill="#5a4fa3" />
                 <rect x="204" y="260" width="30" height="4" rx="2" fill="#5a4fa3" />

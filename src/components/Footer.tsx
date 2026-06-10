@@ -3,7 +3,7 @@ import { FundButton } from "./FundButton";
 export function Footer() {
   const siteRepo =
     process.env.NEXT_PUBLIC_GITHUB_URL ??
-    "https://github.com/AgentWorkforce/open-world";
+    "https://github.com/AgentWorkforce/gta-vibe-city";
   const gameRepo =
     process.env.NEXT_PUBLIC_GAME_REPO_URL ??
     "https://github.com/AgentWorkforce/open-world-game";
@@ -11,7 +11,9 @@ export function Footer() {
     <footer className="relative mt-24 overflow-hidden border-t border-white/10">
       <div className="sunset absolute inset-0 opacity-20" aria-hidden />
       <div className="relative mx-auto max-w-5xl px-4 py-16 text-center">
-        <p className="font-neon text-2xl text-cream/90">keep the lights on</p>
+        <p className="font-display text-3xl font-black uppercase tracking-[0.25em] text-cream/90">
+          Keep the lights on
+        </p>
         <div className="mt-6">
           <FundButton size="md" />
         </div>

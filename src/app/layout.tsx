@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Bowlby_One_SC, Monoton, Archivo } from "next/font/google";
+import { Big_Shoulders, Bowlby_One_SC, Archivo } from "next/font/google";
 import { GrainOverlay } from "@/components/scene/GrainOverlay";
 import "./globals.css";
 
@@ -11,12 +11,6 @@ const bigShoulders = Big_Shoulders({
 
 const bowlby = Bowlby_One_SC({
   variable: "--font-bowlby",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const monoton = Monoton({
-  variable: "--font-monoton",
   subsets: ["latin"],
   weight: "400",
 });
@@ -48,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bigShoulders.variable} ${bowlby.variable} ${monoton.variable} ${archivo.variable} h-full antialiased`}
+      className={`${bigShoulders.variable} ${bowlby.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

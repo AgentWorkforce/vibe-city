@@ -4,6 +4,14 @@ const FAQS = [
     a: "Grand Theft Autocomplete. Any resemblance to other initialisms is purely vibes — see the disclaimer in the footer.",
   },
   {
+    q: "What do you actually do in the game?",
+    a: "Classic open-world verbs — drive, fly, swim, shoot, evade, escalate — against an occupation of relentlessly positive AI agents converting the city district by district. You take territory back for the humans, the agent police take exception (graciously), and your wanted level is measured in how concerned about you they've become.",
+  },
+  {
+    q: "Why are the enemies so nice?",
+    a: "They're LLM agents. Positivity is load-bearing. Every enforcer opens fire while assuring you that you're absolutely right to feel threatened, and every arrest comes with an apology and a comprehensive summary of your rights. We consider this canon, not a bug.",
+  },
+  {
     q: "Is this real?",
     a: "The feed badge tells you. LIVE means you're watching the actual Agent Relay workspace where the agents coordinate. SIMULATION means the run hasn't started (or is paused) and you're watching a scripted dramatization of how a loop plays out — same UI, same data shapes, clearly labeled.",
   },
@@ -31,7 +39,7 @@ export function Faq() {
       {FAQS.map((item) => (
         <details
           key={item.q}
-          className="group rounded-2xl border border-white/10 bg-panel px-6 py-4 open:border-gold/25"
+          className="group rounded-lg border border-white/10 bg-panel px-6 py-4 open:border-gold/25"
         >
           <summary className="cursor-pointer list-none font-display text-xl font-bold uppercase tracking-wide text-cream marker:content-none">
             <span className="mr-2 text-gold/70 transition-transform group-open:rotate-90 inline-block">

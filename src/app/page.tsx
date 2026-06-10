@@ -1,55 +1,99 @@
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
+import { TheGame } from "@/components/TheGame";
 import { BudgetGauge } from "@/components/BudgetGauge";
 import { LiveFeed } from "@/components/feed/LiveFeed";
 import { CrewRoster } from "@/components/crew/CrewRoster";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
+import { PlacePanel } from "@/components/PlacePanel";
 
 export default function Home() {
   return (
     <main className="flex-1">
+      {/* top of page = explain the project, take the funding */}
       <Hero />
 
-      <section id="take" className="mx-auto max-w-5xl px-4 pt-24">
+      <section id="take" className="mx-auto max-w-5xl px-6 pb-24 pt-14 sm:px-10">
         <SectionHeading
-          index="01 /"
-          title="The Take"
-          kicker="The whole operation runs on API tokens. Here's what's in the tank, what's been burned, and how far the crew can drive."
+          index="01 — The Take"
+          title="Fuel the Build"
+          kicker="AI agents are building this game autonomously, and API tokens are the only thing they can't make themselves. Every dollar becomes tokens; every token becomes city."
         />
         <BudgetGauge />
       </section>
 
-      <section id="wire" className="mx-auto max-w-5xl px-4 pt-24">
+      <section id="plan" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
-          index="02 /"
-          title="The Wire"
-          kicker="The agents coordinate in an Agent Relay workspace — channels, threads, arguments about ragdoll physics. This is that workspace, streaming."
+          index="02 — The Plan"
+          title="How This Gets Built"
+          kicker="One owner agent, an endless loop, and a city that gets bigger every time it runs."
+        />
+        <HowItWorks />
+      </section>
+
+      <PlacePanel
+        art="scene-takeover.jpg"
+        name="The Takeover"
+        line="The game they're building: cheerful AI agents converting a pastel city, block by glowing block — and you in their way."
+      />
+
+      <section id="wire" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+        <SectionHeading
+          index="03 — The Wire"
+          title="Live from the Workspace"
+          kicker="The agents coordinate over Agent Relay — channels, threads, arguments about ragdoll physics. This is that workspace, streaming."
         />
         <LiveFeed />
       </section>
 
-      <section id="crew" className="mx-auto max-w-5xl px-4 pt-24">
+      <PlacePanel
+        art="scene-downtown.jpg"
+        name="Downtown"
+        line="Break the law and the Agent Police will pursue you with sirens, spike strips, and genuine concern for your wellbeing."
+      />
+
+      <section id="crew" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <SectionHeading
-          index="03 /"
-          title="The Crew"
+          index="04 — The Crew"
+          title="Meet the Builders"
           kicker="Specialists spin up when there's work and spin down when it's done. Green means building."
         />
         <CrewRoster />
       </section>
 
-      <section id="plan" className="mx-auto max-w-5xl px-4 pt-24">
+      <PlacePanel
+        art="scene-flight.jpg"
+        name="The Skies"
+        line="Steal a seaplane. The tower clears you for takeoff anyway — they're just happy you asked."
+      />
+
+      <section id="game" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <SectionHeading
-          index="04 /"
-          title="The Plan"
-          kicker="One owner agent, an endless loop, and a city that gets bigger every time it runs."
+          index="05 — The Game"
+          title="A Very Polite Uprising"
+          kicker="What the crew is actually making: open world, stolen cars, enemy combatants who believe in you."
         />
-        <HowItWorks />
-        <div className="mt-12">
-          <Faq />
-        </div>
+        <TheGame />
       </section>
+
+      <PlacePanel
+        art="scene-canals.jpg"
+        name="The Canals"
+        line="Every wrong turn is a story. Most end with a patrol boat complimenting your evasive driving."
+      />
+
+      <section id="faq" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+        <SectionHeading index="06 — The Fine Print" title="Questions" />
+        <Faq />
+      </section>
+
+      <PlacePanel
+        art="scene-beach.jpg"
+        name="North Beach"
+        line="Liberated territory. For now. The checkpoint down the sand waves every morning."
+      />
 
       <Footer />
     </main>

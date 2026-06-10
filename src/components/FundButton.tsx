@@ -1,12 +1,11 @@
 import clsx from "clsx";
 
+const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/dRm28s0qJ6fX4blaU61ZS00";
+
 export function FundButton({ size = "lg" }: { size?: "lg" | "md" }) {
-  const href =
-    process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ??
-    "https://buy.stripe.com/REPLACE_ME";
   return (
     <a
-      href={href}
+      href={STRIPE_PAYMENT_LINK}
       target="_blank"
       rel="noopener noreferrer"
       className={clsx(

@@ -9,16 +9,13 @@ export function SectionHeading({
 }) {
   return (
     <div className="mb-10">
-      <div className="flex items-center gap-4">
-        <span className="font-neon text-sm text-gold/80 sm:text-base">
-          {index}
-        </span>
-        <div className="rule-gold flex-1" />
-      </div>
-      <h2 className="mt-3 font-display text-5xl font-black uppercase tracking-wide text-cream sm:text-7xl">
+      <p className="font-display text-sm font-bold uppercase tracking-[0.45em] text-gold/80">
+        {index}
+      </p>
+      <h2 className="mt-2 font-display text-5xl font-black uppercase tracking-wide text-cream sm:text-7xl">
         {title}
       </h2>
-      {kicker && <p className="mt-2 max-w-2xl text-muted">{kicker}</p>}
+      {kicker && <p className="mt-3 max-w-2xl text-muted">{kicker}</p>}
     </div>
   );
 }

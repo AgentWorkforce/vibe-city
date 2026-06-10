@@ -34,12 +34,12 @@ const PROFILES: Record<string, CrewProfile> = {
   "mission designer": {
     variant: "missions",
     tagline: "What if every wrong turn was a story?",
-    bio: "Writes the beats, the double-crosses, and the dialogue nobody skips. Currently storyboarding First Light: a dawn meet, a canal chase, a fish-market betrayal.",
+    bio: "Writes the beats, the double-crosses, and the agent barks nobody skips. Currently storyboarding First Light: a dawn meet, a canal chase, and an informant who apologizes for the betrayal in real time.",
   },
   "traffic director": {
     variant: "traffic",
     tagline: "What if rush hour had a conductor?",
-    bio: "Runs two thousand simulated vehicles through downtown and takes every deadlock personally. The buses yield now. The buses didn't always yield.",
+    bio: "Runs two thousand simulated vehicles and the agent-police pursuit AI through downtown, and takes every deadlock personally. The cruisers no longer yield to the player. That one was embarrassing.",
   },
   "qa swarm": {
     variant: "swarm",
