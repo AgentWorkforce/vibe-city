@@ -51,12 +51,20 @@ function Drone({ x, y, r, eye = 0.35 }: { x: number; y: number; r: number; eye?:
   );
 }
 
-function BaseBot({ children, rightArm }: { children?: React.ReactNode; rightArm?: React.ReactNode }) {
+function BaseBot({
+  children,
+  rightArm,
+  scenery = true,
+}: {
+  children?: React.ReactNode;
+  rightArm?: React.ReactNode;
+  scenery?: boolean;
+}) {
   return (
     <>
-      {/* warm backlight + ground shadow */}
-      <ellipse cx="140" cy="230" rx="120" ry="140" fill="url(#pGlow)" />
-      <ellipse cx="140" cy="350" rx="78" ry="10" fill="#1d1640" opacity="0.28" />
+      {/* warm backlight + ground shadow (skipped on paint plates) */}
+      {scenery && <ellipse cx="140" cy="230" rx="120" ry="140" fill="url(#pGlow)" />}
+      {scenery && <ellipse cx="140" cy="350" rx="78" ry="10" fill="#1d1640" opacity="0.28" />}
       {/* legs + feet */}
       <g fill="url(#pBody)">
         <rect x="116" y="296" width="19" height="50" rx="8" />
@@ -90,7 +98,13 @@ function BaseBot({ children, rightArm }: { children?: React.ReactNode; rightArm?
   );
 }
 
-export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
+export function RobotPortrait({
+  variant,
+  scenery = true,
+}: {
+  variant: PortraitVariant;
+  scenery?: boolean;
+}) {
   return (
     <svg
       aria-hidden
@@ -101,14 +115,15 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
       <Shading />
       {variant === "swarm" ? (
         <>
-          <ellipse cx="140" cy="240" rx="130" ry="140" fill="url(#pGlow)" />
-          <ellipse cx="140" cy="350" rx="100" ry="10" fill="#1d1640" opacity="0.24" />
+          {scenery && <ellipse cx="140" cy="240" rx="130" ry="140" fill="url(#pGlow)" />}
+          {scenery && <ellipse cx="140" cy="350" rx="100" ry="10" fill="#1d1640" opacity="0.24" />}
           <Drone x={140} y={210} r={46} />
           <Drone x={66} y={282} r={28} eye={0.4} />
           <Drone x={216} y={268} r={24} eye={0.4} />
         </>
       ) : variant === "foreman" ? (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* bent arm pinning blueprints to the hip */}
@@ -125,6 +140,7 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
         </BaseBot>
       ) : variant === "architect" ? (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* arm raised, holding a model tower */}
@@ -147,6 +163,7 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
         </BaseBot>
       ) : variant === "physics" ? (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* arm out, dangling a pendulum */}
@@ -165,6 +182,7 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
         </BaseBot>
       ) : variant === "missions" ? (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* holding a clapperboard */}
@@ -188,6 +206,7 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
         </BaseBot>
       ) : variant === "traffic" ? (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* holding a stop paddle */}
@@ -210,6 +229,7 @@ export function RobotPortrait({ variant }: { variant: PortraitVariant }) {
         </BaseBot>
       ) : (
         <BaseBot
+          scenery={scenery}
           rightArm={
             <>
               {/* thumbs up */}

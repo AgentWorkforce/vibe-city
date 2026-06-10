@@ -51,3 +51,17 @@ Copy `.env.example` to `.env.local` and fill in:
 - Upgrade path for sub-second latency: a small always-on bridge service holding a
   single workspace event stream (`relay.addListener`) and fanning out via SSE,
   serving the same response shape.
+
+## Regenerating the painted art
+
+The raster art in public/art/ is produced by an in-repo painterly pipeline —
+no image-generation API involved:
+
+1. `npm run dev` then `node scripts/render-plates.mjs` renders clean source
+   plates from /art-source/[slot] (hero scene + each robot, transparent bg).
+2. `scripts/paint.py` (python3 + pillow/numpy) repaints each plate with
+   stroke-based painterly rendering — layered curved brush strokes following
+   image gradients (Hertzmann, SIGGRAPH '98) — and writes to public/art/.
+
+To swap in hand-made or AI-generated art instead, just replace the files in
+public/art/ (specs and prompts in public/art/PROMPTS.md).

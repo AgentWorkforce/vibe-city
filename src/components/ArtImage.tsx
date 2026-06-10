@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 /**
@@ -26,12 +26,20 @@ export function ArtImage({
   fallback: React.ReactNode;
 }) {
   const [state, setState] = useState<"loading" | "ok" | "missing">("loading");
+  const ref = useRef<HTMLImageElement>(null);
+
+  // the image can finish (or 404) before hydration attaches onLoad/onError
+  useEffect(() => {
+    const img = ref.current;
+    if (img?.complete) setState(img.naturalWidth > 0 ? "ok" : "missing");
+  }, []);
 
   return (
     <div className={clsx("pointer-events-none", className)}>
       {state !== "missing" && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          ref={ref}
           src={src}
           alt={alt}
           onLoad={() => setState("ok")}
