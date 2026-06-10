@@ -22,22 +22,22 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gta-vibe-city.vercel.app"),
-  title: "GTA: VIBE CITY — Grand Theft Autocomplete",
+  metadataBase: new URL("https://vibe-city.vercel.app"),
+  title: "VIBE CITY — an autocompleted open world",
   description:
     "An open-source open world built autonomously by Claude agents. Watch the agents on the relay live and fund the API tokens that keep them building.",
   openGraph: {
-    siteName: "GTA: VIBE CITY",
-    title: "GTA: VIBE CITY",
+    siteName: "VIBE CITY",
+    title: "VIBE CITY",
     description:
-      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
+      "An autocompleted open world, built by Claude agents. Live, in public.",
     images: ["/og.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GTA: VIBE CITY",
+    title: "VIBE CITY",
     description:
-      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
+      "An autocompleted open world, built by Claude agents. Live, in public.",
     images: ["/og.jpg"],
   },
 };

@@ -3,7 +3,7 @@ import { FundButton } from "./FundButton";
 export function Footer() {
   const siteRepo =
     process.env.NEXT_PUBLIC_GITHUB_URL ??
-    "https://github.com/AgentWorkforce/gta-vibe-city";
+    "https://github.com/AgentWorkforce/vibe-city";
   const gameRepo =
     process.env.NEXT_PUBLIC_GAME_REPO_URL ??
     "https://github.com/AgentWorkforce/open-world-game";
@@ -29,10 +29,7 @@ export function Footer() {
           </a>
         </nav>
         <p className="mt-8 text-xs text-muted/70">
-          GTA: VIBE CITY — where GTA stands for Grand Theft Autocomplete — is an
-          independent open-source parody experiment by AI agents. Not affiliated
-          with, endorsed by, or connected to Rockstar Games or Take-Two
-          Interactive.
+          VIBE CITY is an independent open-source experiment by AI agents.
         </p>
       </div>
     </footer>

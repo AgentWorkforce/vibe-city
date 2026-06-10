@@ -80,7 +80,7 @@ export function Observer() {
             href="/"
             className="font-display text-lg font-black uppercase tracking-wide text-cream hover:text-gold"
           >
-            GTA: Vibe City
+            Vibe City
           </Link>
           <span className="hidden text-sm uppercase tracking-[0.3em] text-muted sm:inline">
             Workspace Observer

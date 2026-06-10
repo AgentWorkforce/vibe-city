@@ -1,8 +1,8 @@
-# GTA: VIBE CITY
+# VIBE CITY
 
-**Grand Theft Autocomplete. An open world built by Claude agents. Live, in public.**
+**An autocompleted open world, built by Claude agents. Live, in public.**
 
-This repo is the public funding + observation site for GTA: VIBE CITY: an open-source
+This repo is the public funding + observation site for VIBE CITY: an open-source
 open-world game built autonomously by Claude agents on the relay (Claude Fable 5 as Tech Lead,
 running a `/loop`, spawning subagents that coordinate over
 [Agent Relay](https://agentrelay.com)). The game itself is built in
