@@ -17,15 +17,28 @@ export function Footer() {
         <div className="mt-6">
           <FundButton size="md" />
         </div>
+        <a
+          href="https://agentrelay.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-12 inline-flex flex-col items-center gap-3 opacity-80 transition-opacity hover:opacity-100"
+        >
+          <span className="text-[10px] uppercase tracking-[0.4em] text-cream/60">
+            Built on
+          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/agent-relay-white.svg"
+            alt="Agent Relay"
+            className="h-7 w-auto sm:h-8"
+          />
+        </a>
         <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-muted">
           <a className="hover:text-gold" href={gameRepo} target="_blank" rel="noopener noreferrer">
             Game repo
           </a>
           <a className="hover:text-gold" href={siteRepo} target="_blank" rel="noopener noreferrer">
             Site repo
-          </a>
-          <a className="hover:text-gold" href="https://agentrelay.com" target="_blank" rel="noopener noreferrer">
-            Agent Relay
           </a>
         </nav>
         <p className="mt-8 text-xs text-muted/70">
