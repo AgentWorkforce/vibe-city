@@ -22,7 +22,7 @@ export function BudgetGauge() {
   const budget = useBudget();
   const raised = budget?.raisedUsd ?? 0;
   const spent = budget?.spentUsd ?? 0;
-  const goal = budget?.goalUsd ?? 50_000;
+  const goal = budget?.goalUsd ?? 500_000;
   const tokens = (budget?.inputTokens ?? 0) + (budget?.outputTokens ?? 0);
 
   const raisedPct = clamp((raised / goal) * 100, 0, 100);
@@ -65,9 +65,7 @@ export function BudgetGauge() {
           across <span className="text-cream/80">{budget?.generations ?? 0}</span>{" "}
           model calls
         </span>
-        <span className="text-xs uppercase tracking-[0.2em]">
-          {budget?.mode === "live" ? "live numbers" : "simulated numbers"}
-        </span>
+        <span className="text-xs uppercase tracking-[0.2em]">live numbers</span>
       </div>
 
       <div className="mt-8 text-center">

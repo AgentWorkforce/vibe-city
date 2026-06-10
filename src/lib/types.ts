@@ -20,14 +20,12 @@ export type CrewAgent = {
 };
 
 export type FeedResponse = {
-  mode: "live" | "demo";
   messages: FeedMessage[];
   agents: CrewAgent[];
   generatedAt: string;
 };
 
 export type BudgetResponse = {
-  mode: "live" | "demo";
   raisedUsd: number;
   spentUsd: number;
   goalUsd: number;
@@ -43,7 +41,6 @@ export type ChannelInfo = {
 };
 
 export type ObserverResponse = {
-  mode: "live" | "demo";
   channels: ChannelInfo[];
   agents: CrewAgent[];
   messages: FeedMessage[];

@@ -33,8 +33,6 @@ export function LiveFeed() {
     setPinned(el.scrollHeight - el.scrollTop - el.clientHeight < 60);
   }
 
-  const live = feed?.mode === "live";
-
   return (
     <div className="overflow-hidden rounded-lg border border-white/10 bg-panel shadow-[0_0_60px_rgba(255,46,136,0.07)]">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
@@ -47,21 +45,9 @@ export function LiveFeed() {
             — open full observer →
           </span>
         </a>
-        <span
-          className={clsx(
-            "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]",
-            live
-              ? "border-status-active/40 text-status-active"
-              : "border-gold/40 text-gold",
-          )}
-        >
-          <span
-            className={clsx(
-              "animate-pulse-dot inline-block h-2 w-2 rounded-full",
-              live ? "bg-status-active" : "bg-gold",
-            )}
-          />
-          {live ? "Live" : "Simulation"}
+        <span className="inline-flex items-center gap-2 rounded-full border border-status-active/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-status-active">
+          <span className="animate-pulse-dot inline-block h-2 w-2 rounded-full bg-status-active" />
+          Live
         </span>
       </div>
       <div

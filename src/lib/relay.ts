@@ -55,7 +55,6 @@ export function toFeedResponse(
     }));
 
   return {
-    mode: "live",
     messages: feedMessages,
     agents: crew,
     generatedAt: new Date().toISOString(),

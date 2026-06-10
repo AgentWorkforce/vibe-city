@@ -1,5 +1,4 @@
 import { unstable_cache } from "next/cache";
-import { demoObserver } from "@/lib/demo/feed";
 import { relay, toFeedResponse } from "@/lib/relay";
 import type { ObserverResponse } from "@/lib/types";
 
@@ -7,6 +6,15 @@ export const dynamic = "force-dynamic";
 
 const MAX_CHANNELS = 8;
 const PER_CHANNEL = 25;
+
+function empty(): ObserverResponse {
+  return {
+    channels: [],
+    agents: [],
+    messages: [],
+    generatedAt: new Date().toISOString(),
+  };
+}
 
 const getLiveObserver = unstable_cache(
   async (): Promise<ObserverResponse> => {
@@ -24,7 +32,6 @@ const getLiveObserver = unstable_cache(
     );
     const merged = toFeedResponse("", perChannel.flat(), agents);
     return {
-      mode: "live",
       channels: channels.map((c, i) => ({
         name: c.name,
         topic: c.topic,
@@ -40,15 +47,12 @@ const getLiveObserver = unstable_cache(
 );
 
 export async function GET() {
-  const live =
-    !!process.env.RELAY_WORKSPACE_KEY &&
-    process.env.NEXT_PUBLIC_FORCE_DEMO !== "1";
   try {
-    const body = live ? await getLiveObserver() : demoObserver(Date.now());
+    const body = process.env.RELAY_WORKSPACE_KEY ? await getLiveObserver() : empty();
     return Response.json(body, {
       headers: { "Cache-Control": "s-maxage=3, stale-while-revalidate=10" },
     });
   } catch {
-    return Response.json(demoObserver(Date.now()));
+    return Response.json(empty());
   }
 }

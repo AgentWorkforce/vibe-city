@@ -60,7 +60,6 @@ export function Observer() {
   const messages = (data?.messages ?? []).filter(
     (m) => channel === "all" || m.channel === channel,
   );
-  const live = data?.mode === "live";
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -87,19 +86,9 @@ export function Observer() {
             Workspace Observer
           </span>
         </div>
-        <span
-          className={clsx(
-            "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]",
-            live ? "border-status-active/40 text-status-active" : "border-gold/40 text-gold",
-          )}
-        >
-          <span
-            className={clsx(
-              "animate-pulse-dot inline-block h-2 w-2 rounded-full",
-              live ? "bg-status-active" : "bg-gold",
-            )}
-          />
-          {live ? "Live" : "Simulation"}
+        <span className="inline-flex items-center gap-2 rounded-full border border-status-active/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-status-active">
+          <span className="animate-pulse-dot inline-block h-2 w-2 rounded-full bg-status-active" />
+          Live
         </span>
       </header>
 

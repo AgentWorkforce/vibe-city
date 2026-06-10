@@ -1,8 +1,10 @@
 import { unstable_cache } from "next/cache";
-import { demoFeed } from "@/lib/demo/feed";
 import { relay, toFeedResponse } from "@/lib/relay";
+import type { FeedResponse } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
+
+const EMPTY: Omit<FeedResponse, "generatedAt"> = { messages: [], agents: [] };
 
 const getLiveFeed = unstable_cache(
   async () => {
@@ -21,16 +23,15 @@ const getLiveFeed = unstable_cache(
 );
 
 export async function GET() {
-  const live =
-    !!process.env.RELAY_WORKSPACE_KEY &&
-    process.env.NEXT_PUBLIC_FORCE_DEMO !== "1";
   try {
-    const body = live ? await getLiveFeed() : demoFeed(Date.now());
+    const body = process.env.RELAY_WORKSPACE_KEY
+      ? await getLiveFeed()
+      : { ...EMPTY, generatedAt: new Date().toISOString() };
     return Response.json(body, {
       headers: { "Cache-Control": "s-maxage=3, stale-while-revalidate=10" },
     });
   } catch {
-    // Upstream unreachable: fall back to the simulation rather than break the page.
-    return Response.json(demoFeed(Date.now()));
+    // upstream unreachable: serve an empty feed rather than break the page
+    return Response.json({ ...EMPTY, generatedAt: new Date().toISOString() });
   }
 }
