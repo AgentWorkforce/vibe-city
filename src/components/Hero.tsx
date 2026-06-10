@@ -17,7 +17,7 @@ export function Hero() {
 
       {/* outlined city mark + cta, anchored to the bottom of the scene */}
       <div className="relative z-10 mt-auto px-4 pb-16">
-        <h1 className="sr-only">VIBE CITY — can Claude build an open world game?</h1>
+        <h1 className="sr-only">VIBE CITY</h1>
         <div
           aria-hidden
           className="absolute -inset-x-24 -top-10 bottom-0 -z-10"
@@ -30,8 +30,8 @@ export function Hero() {
           Vibe City
         </p>
         <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
-          Claude Fable 5 is going to make no mistakes and build an open world
-          game.
+          An open world game created entirely by Claude Fable and a team of
+          agents working together on Agent Relay.
           <br />
           The only thing you need to do is add tokens to make it happen.
         </p>
