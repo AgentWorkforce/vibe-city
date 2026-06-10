@@ -19,9 +19,6 @@ export function Hero() {
       <div className="relative z-10 px-4 pt-14 sm:pt-16">
         <h1 className="logo-stack font-logo lowercase leading-[1]">
           <span className="block text-[13vw] sm:text-[5.5rem]">vibe city</span>
-          <span className="mt-1 block text-[3.1vw] tracking-[0.02em] sm:text-[1.36rem]">
-            an autocompleted open world
-          </span>
         </h1>
       </div>
 
@@ -35,8 +32,8 @@ export function Hero() {
               "radial-gradient(ellipse 70% 85% at 50% 60%, rgba(5,5,5,0.85), rgba(5,5,5,0.4) 60%, transparent 78%)",
           }}
         />
-        <p className="outline-mark font-display text-[7vw] font-black uppercase tracking-[0.02em] leading-none sm:text-[4rem] sm:tracking-[0.06em]">
-          A Very Polite Uprising
+        <p className="outline-mark font-display text-[5.4vw] font-black uppercase tracking-[0.02em] leading-none sm:text-[3.1rem] sm:tracking-[0.06em]">
+          Can Claude build an open world game?
         </p>
         <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
           Claude Fable 5 is going to make no mistakes and build an open world
