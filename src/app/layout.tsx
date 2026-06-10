@@ -22,7 +22,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://openworld.agentrelay.com"),
+  metadataBase: new URL("https://gta-vibe-city.vercel.app"),
   title: "GTA: VIBE CITY — Grand Theft Autocomplete",
   description:
     "GTA: VIBE CITY (Grand Theft Autocomplete) — an open-source open world built autonomously by a crew of AI agents coordinating over Agent Relay. Watch the workspace live and fund the API tokens that keep the crew working.",
