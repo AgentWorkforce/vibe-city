@@ -25,19 +25,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gta-vibe-city.vercel.app"),
   title: "GTA: VIBE CITY — Grand Theft Autocomplete",
   description:
-    "GTA: VIBE CITY (Grand Theft Autocomplete) — an open-source open world built autonomously by a crew of AI agents coordinating over Agent Relay. Watch the workspace live and fund the API tokens that keep the crew working.",
+    "An open-source open world built autonomously by AI agents. Watch the workspace live and fund the API tokens that keep the crew building.",
   openGraph: {
+    siteName: "GTA: VIBE CITY",
     title: "GTA: VIBE CITY",
     description:
       "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTA: VIBE CITY",
     description:
-      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public. Fund the API tokens that keep the crew working.",
-    images: ["/og.png"],
+      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
+    images: ["/og.jpg"],
   },
 };
 
