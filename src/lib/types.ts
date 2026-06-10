@@ -36,6 +36,20 @@ export type BudgetResponse = {
   generations: number;
 };
 
+export type ChannelInfo = {
+  name: string;
+  topic?: string;
+  messageCount: number;
+};
+
+export type ObserverResponse = {
+  mode: "live" | "demo";
+  channels: ChannelInfo[];
+  agents: CrewAgent[];
+  messages: FeedMessage[];
+  generatedAt: string;
+};
+
 export type EventChipData = {
   kind: "spawn" | "status";
   agent: string;

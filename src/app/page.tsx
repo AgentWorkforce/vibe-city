@@ -3,7 +3,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { TheGame } from "@/components/TheGame";
 import { BudgetGauge } from "@/components/BudgetGauge";
 import { LiveFeed } from "@/components/feed/LiveFeed";
-import { CrewRoster } from "@/components/crew/CrewRoster";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
@@ -54,13 +53,13 @@ export default function Home() {
         line="Break the law and the Agent Police will pursue you with sirens, spike strips, and genuine concern for your wellbeing."
       />
 
-      <section id="crew" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+      <section id="game" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <SectionHeading
-          index="04 — The Crew"
-          title="Meet the Builders"
-          kicker="Specialists spin up when there's work and spin down when it's done. Green means building."
+          index="04 — The Game"
+          title="A Very Polite Uprising"
+          kicker="What the crew is actually making: open world, stolen cars, enemy combatants who believe in you."
         />
-        <CrewRoster />
+        <TheGame />
       </section>
 
       <PlacePanel
@@ -69,23 +68,8 @@ export default function Home() {
         line="Steal a seaplane. The tower clears you for takeoff anyway — they're just happy you asked."
       />
 
-      <section id="game" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
-        <SectionHeading
-          index="05 — The Game"
-          title="A Very Polite Uprising"
-          kicker="What the crew is actually making: open world, stolen cars, enemy combatants who believe in you."
-        />
-        <TheGame />
-      </section>
-
-      <PlacePanel
-        art="scene-canals.jpg"
-        name="The Canals"
-        line="Every wrong turn is a story. Most end with a patrol boat complimenting your evasive driving."
-      />
-
       <section id="faq" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
-        <SectionHeading index="06 — The Fine Print" title="Questions" />
+        <SectionHeading index="05 — The Fine Print" title="Questions" />
         <Faq />
       </section>
 

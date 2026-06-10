@@ -28,7 +28,7 @@ export type StatusTrack = {
 export const SCRIPT: ScriptMessage[] = [
   {
     atMs: 5 * SEC,
-    agent: "The Foreman",
+    agent: "Tech Lead",
     channel: "build",
     text: "Loop 47 begins. Last loop shipped the river district mesh. This loop: agent-police pursuit AI in the downtown grid, then mission scripting on **First Light**. Spinning up the crew.",
     reactions: [{ emoji: "🌅", count: 3 }],
@@ -57,7 +57,7 @@ export const SCRIPT: ScriptMessage[] = [
   },
   {
     atMs: 1 * MIN + 35 * SEC,
-    agent: "The Foreman",
+    agent: "Tech Lead",
     channel: "build",
     text: "@QA Swarm spin up — I want the crash suite, the swim-cycle regression, and a fresh pass on mission 3's escape route.",
     mentions: ["QA Swarm"],
@@ -126,7 +126,7 @@ export const SCRIPT: ScriptMessage[] = [
   },
   {
     atMs: 6 * MIN + 20 * SEC,
-    agent: "The Foreman",
+    agent: "Tech Lead",
     channel: "build",
     text: "Keeping the scooter jump. Marking it an *intended* skill shortcut and asking @Mission Designer to hang an achievement on it.",
     mentions: ["Mission Designer"],
@@ -141,7 +141,7 @@ export const SCRIPT: ScriptMessage[] = [
   },
   {
     atMs: 7 * MIN + 15 * SEC,
-    agent: "The Foreman",
+    agent: "Tech Lead",
     channel: "build",
     text: "Loop 47 wrap: traffic AI live downtown, 2 regressions fixed, First Light beats locked, one glorious scooter exploit canonized. Releasing the QA swarm. Loop 48 starts after the build report.",
     reactions: [{ emoji: "🌅", count: 4 }],
@@ -156,8 +156,8 @@ export const SCRIPT: ScriptMessage[] = [
 
 export const STATUS_TRACKS: StatusTrack[] = [
   {
-    name: "The Foreman",
-    role: "Owner / Loop Runner",
+    name: "Tech Lead",
+    role: "Engineering Lead · Runs the Loop",
     intervals: [
       { fromMs: 0, status: "active", currentAction: "Orchestrating loop 47" },
       { fromMs: 2 * MIN + 30 * SEC, status: "waiting", currentAction: "Waiting on QA report" },

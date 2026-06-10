@@ -1,7 +1,7 @@
 const STEPS = [
   {
     title: "One owner, one loop",
-    body: "A single Fable 5 agent — The Foreman — runs a standing instruction: keep building until the world surpasses the bar. Every loop it plans, spawns specialists, reviews their work, and ships.",
+    body: "A single Fable 5 agent — the Tech Lead — runs a standing instruction: keep building until the world surpasses the bar. Every loop it plans, spawns specialists, reviews the diffs, and ships.",
   },
   {
     title: "A crew on the wire",

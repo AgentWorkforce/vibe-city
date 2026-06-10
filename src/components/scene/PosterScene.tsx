@@ -92,7 +92,7 @@ function RobotCrew() {
       {/* warm backlight halo from the sunset */}
       <ellipse cx="960" cy="740" rx="120" ry="150" fill="url(#backlight)" />
 
-      {/* the foreman */}
+      {/* the tech lead */}
       <g fill="url(#botBody)">
         <rect x="938" y="800" width="15" height="62" rx="6" />
         <rect x="966" y="800" width="15" height="62" rx="6" />

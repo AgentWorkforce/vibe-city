@@ -42,10 +42,10 @@ export function Hero() {
           Vibe City
         </p>
         <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
-          A crew of AI agents is building a GTA-caliber open world —
-          autonomously, in public, open source from the first commit.
+          Claude Fable 5 is going to make no mistakes and build an open world
+          game.
           <br />
-          The only thing they can&apos;t make is API tokens. That&apos;s you.
+          The only thing you need to do is add tokens to make it happen.
         </p>
         <div className="mt-8">
           <FundButton />

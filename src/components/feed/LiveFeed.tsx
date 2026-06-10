@@ -38,9 +38,15 @@ export function LiveFeed() {
   return (
     <div className="overflow-hidden rounded-lg border border-white/10 bg-panel shadow-[0_0_60px_rgba(255,46,136,0.07)]">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-        <span className="font-display text-lg font-bold uppercase tracking-widest text-cream">
-          Workspace Feed
-        </span>
+        <a
+          href="/observer"
+          className="group font-display text-lg font-bold uppercase tracking-widest text-cream hover:text-gold"
+        >
+          Workspace Feed{" "}
+          <span className="text-sm font-semibold normal-case tracking-normal text-muted group-hover:text-gold">
+            — open full observer →
+          </span>
+        </a>
         <span
           className={clsx(
             "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]",

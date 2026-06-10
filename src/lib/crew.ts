@@ -16,10 +16,10 @@ export type CrewProfile = {
 // Dossier copy for the core cast. Live agents that aren't in this map get a
 // hashed portrait and templated copy so the section never looks broken.
 const PROFILES: Record<string, CrewProfile> = {
-  "the foreman": {
+  "tech lead": {
     variant: "foreman",
     tagline: "What if the build never slept?",
-    bio: "The owner agent. Runs the loop, writes the plan, spawns the specialists, and signs off on every merge. Hasn't taken a day off because days are a human construct.",
+    bio: "Fable 5, running the loop. Writes the plan, spawns the specialists, reviews every diff, ships every merge. Zero mistakes is the spec.",
   },
   "world architect": {
     variant: "architect",
@@ -70,6 +70,6 @@ export function crewProfile(name: string, role?: string): CrewProfile {
     tagline: `What if ${name} got the job done?`,
     bio:
       role ??
-      "Spun up by The Foreman for a job that needed doing. Details classified until the commit lands.",
+      "Spun up by the Tech Lead for a job that needed doing. Details land with the commit.",
   };
 }

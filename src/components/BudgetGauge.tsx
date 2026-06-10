@@ -22,7 +22,7 @@ export function BudgetGauge() {
   const budget = useBudget();
   const raised = budget?.raisedUsd ?? 0;
   const spent = budget?.spentUsd ?? 0;
-  const goal = budget?.goalUsd ?? 10_000;
+  const goal = budget?.goalUsd ?? 50_000;
   const tokens = (budget?.inputTokens ?? 0) + (budget?.outputTokens ?? 0);
 
   const raisedPct = clamp((raised / goal) * 100, 0, 100);

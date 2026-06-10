@@ -16,7 +16,7 @@ const getSpend = unstable_cache(async () => fetchSpend(), ["posthog-spend"], {
 });
 
 export async function GET() {
-  const goalUsd = envNumber("FUNDING_GOAL_USD", 10000);
+  const goalUsd = envNumber("FUNDING_GOAL_USD", 50000);
   const raisedUsd = envNumber("FUNDING_RAISED_USD", 0);
 
   let spend: Spend | undefined;
