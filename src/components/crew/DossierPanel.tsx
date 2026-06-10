@@ -35,19 +35,24 @@ function MiniSkyline() {
       aria-hidden
       viewBox="0 0 800 120"
       preserveAspectRatio="xMidYMax slice"
-      className="absolute inset-x-0 bottom-0 h-24 w-full opacity-45"
+      className="absolute inset-x-0 bottom-0 h-24 w-full opacity-60"
     >
-      <g fill="#8f7fd4">
+      <g>
         {[
           [0, 50, 52, 70], [60, 30, 40, 90], [110, 58, 46, 62], [170, 22, 34, 98],
           [220, 46, 56, 74], [290, 34, 42, 86], [350, 56, 50, 64], [420, 18, 38, 102],
           [470, 44, 54, 76], [540, 30, 44, 90], [600, 52, 48, 68], [660, 26, 36, 94],
           [710, 48, 60, 72], [780, 36, 40, 84],
         ].map(([x, y, w, h], i) => (
-          <rect key={i} x={x} y={y} width={w} height={h} />
+          <g key={i}>
+            <rect x={x} y={y} width={w} height={h} fill="#8f7fd4" />
+            <rect x={x} y={y} width={Math.max(6, w * 0.25)} height={h} fill="#ffd9c2" opacity="0.45" />
+            <rect x={x} y={y} width={w} height={4} fill="#ffe2c4" opacity="0.6" />
+          </g>
         ))}
       </g>
-      <rect y="104" width="800" height="16" fill="#67b9c9" opacity="0.8" />
+      <rect y="104" width="800" height="16" fill="#67b9c9" opacity="0.85" />
+      <rect y="104" width="800" height="4" fill="#ffe9b8" opacity="0.5" />
     </svg>
   );
 }
@@ -67,6 +72,15 @@ export function DossierPanel({ agent, index }: { agent: CrewAgent; index: number
       style={{ background: SCENES[index % SCENES.length] }}
     >
       <MiniSkyline />
+      {/* warm sun pocket + pink wash for the painted-light feel */}
+      <div
+        aria-hidden
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          background:
+            "radial-gradient(ellipse 55% 70% at 70% 78%, rgba(255,217,160,0.9), transparent 70%), radial-gradient(ellipse 60% 60% at 25% 20%, rgba(255,154,210,0.55), transparent 70%)",
+        }}
+      />
       {/* indigo scrim behind the text column so cream type reads on pastel art */}
       <div
         aria-hidden
