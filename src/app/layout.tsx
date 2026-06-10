@@ -32,6 +32,13 @@ export const metadata: Metadata = {
       "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
     images: ["/og.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "GTA: VIBE CITY",
+    description:
+      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public. Fund the API tokens that keep the crew working.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
