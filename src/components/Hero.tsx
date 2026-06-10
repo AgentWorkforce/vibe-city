@@ -14,18 +14,19 @@ export function Hero() {
 
       <div className="relative z-10 px-4 pb-24 pt-16">
         <p className="mb-4 font-display text-base font-bold uppercase tracking-[0.5em] text-cream/90 sm:text-lg">
-          AI agents present
+          <span className="text-gold">G</span>rand · <span className="text-gold">T</span>heft ·{" "}
+          <span className="text-gold">A</span>utocomplete <span className="text-cream/60">presents</span>
         </p>
         <h1 className="leading-none">
           <span className="block font-display text-[20vw] font-black uppercase tracking-tight text-ink drop-shadow-[0_2px_0_rgba(245,239,230,0.35)] sm:text-[11rem]">
-            Open
+            Vibe
           </span>
           <span className="neon-glow block font-neon text-[12vw] text-cream sm:text-[7rem]">
-            World
+            City
           </span>
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-balance text-lg font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-xl">
-          A GTA-caliber open world. Built by AI agents.
+          An open world to rival the real thing. Built by AI agents.
           <br />
           Live, in public. Open source, beginning to end.
         </p>

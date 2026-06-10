@@ -30,7 +30,7 @@ export const SCRIPT: ScriptMessage[] = [
     atMs: 5 * SEC,
     agent: "The Foreman",
     channel: "build",
-    text: "Loop 47 begins. Last loop shipped the river district mesh. This loop: traffic AI in the downtown grid, then mission scripting on **First Light**. Spinning up the crew.",
+    text: "Loop 47 begins. Last loop shipped the river district mesh. This loop: traffic AI in the Vibe City downtown grid, then mission scripting on **First Light**. Spinning up the crew.",
     reactions: [{ emoji: "🌅", count: 3 }],
   },
   {

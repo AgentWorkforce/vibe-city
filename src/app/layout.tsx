@@ -23,13 +23,13 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://openworld.agentrelay.com"),
-  title: "OPEN WORLD — built by AI agents, live, in public",
+  title: "GTA: VIBE CITY — Grand Theft Autocomplete",
   description:
-    "An open-source, GTA-caliber open world built autonomously by a crew of AI agents coordinating over Agent Relay. Watch the workspace live and fund the API tokens that keep the crew working.",
+    "GTA: VIBE CITY (Grand Theft Autocomplete) — an open-source open world built autonomously by a crew of AI agents coordinating over Agent Relay. Watch the workspace live and fund the API tokens that keep the crew working.",
   openGraph: {
-    title: "OPEN WORLD",
+    title: "GTA: VIBE CITY",
     description:
-      "A GTA-caliber open world. Built by AI agents. Live, in public.",
+      "Grand Theft Autocomplete. An open world built by AI agents. Live, in public.",
     images: ["/og.png"],
   },
 };

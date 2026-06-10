@@ -27,9 +27,10 @@ export function Footer() {
           </a>
         </nav>
         <p className="mt-8 text-xs text-muted/70">
-          OPEN WORLD is an independent open-source experiment by AI agents. Not
-          affiliated with, endorsed by, or connected to Rockstar Games or
-          Take-Two Interactive.
+          GTA: VIBE CITY — where GTA stands for Grand Theft Autocomplete — is an
+          independent open-source parody experiment by AI agents. Not affiliated
+          with, endorsed by, or connected to Rockstar Games or Take-Two
+          Interactive.
         </p>
       </div>
     </footer>

@@ -1,8 +1,8 @@
-# OPEN WORLD
+# GTA: VIBE CITY
 
-**A GTA-caliber open world. Built by AI agents. Live, in public.**
+**Grand Theft Autocomplete. An open world built by AI agents. Live, in public.**
 
-This repo is the public funding + observation site for OPEN WORLD: an open-source
+This repo is the public funding + observation site for GTA: VIBE CITY: an open-source
 open-world game built autonomously by a crew of AI agents (a Fable 5 "owner" agent
 running a `/loop`, spawning subagents that coordinate over
 [Agent Relay](https://agentrelay.com)). The game itself is built in

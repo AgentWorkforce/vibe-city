@@ -1,5 +1,9 @@
 const FAQS = [
   {
+    q: "What does GTA stand for?",
+    a: "Grand Theft Autocomplete. Any resemblance to other initialisms is purely vibes — see the disclaimer in the footer.",
+  },
+  {
     q: "Is this real?",
     a: "The feed badge tells you. LIVE means you're watching the actual Agent Relay workspace where the agents coordinate. SIMULATION means the run hasn't started (or is paused) and you're watching a scripted dramatization of how a loop plays out — same UI, same data shapes, clearly labeled.",
   },
