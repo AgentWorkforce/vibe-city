@@ -1,4 +1,5 @@
 import { FundButton } from "./FundButton";
+import { ArtImage } from "./ArtImage";
 import { PosterScene } from "./scene/PosterScene";
 
 export function Hero() {
@@ -7,7 +8,12 @@ export function Hero() {
     "https://github.com/AgentWorkforce/open-world-game";
   return (
     <section className="relative flex min-h-svh flex-col items-center overflow-hidden text-center">
-      <PosterScene />
+      <ArtImage
+        src="/art/hero.jpg"
+        className="absolute inset-0"
+        scrim
+        fallback={<PosterScene />}
+      />
 
       {/* stacked key-art logo */}
       <div className="relative z-10 px-4 pt-14 sm:pt-16">

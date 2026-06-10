@@ -5,6 +5,7 @@ import type { CrewAgent } from "@/lib/types";
 import { crewProfile } from "@/lib/crew";
 import { useRelativeTime } from "@/hooks/useRelativeTime";
 import { RobotPortrait } from "./RobotPortrait";
+import { ArtImage } from "../ArtImage";
 
 const STATUS_LABEL: Record<CrewAgent["status"], string> = {
   active: "On the job",
@@ -131,7 +132,12 @@ export function DossierPanel({ agent, index }: { agent: CrewAgent; index: number
         </div>
 
         <div className="sm:[direction:ltr] relative mx-auto h-64 w-full max-w-[18rem] self-end sm:h-80">
-          <RobotPortrait variant={profile.variant} />
+          <ArtImage
+            src={`/art/portrait-${profile.variant}.png`}
+            className="h-full w-full"
+            imgClassName="object-contain object-bottom drop-shadow-[0_18px_24px_rgba(29,22,64,0.35)]"
+            fallback={<RobotPortrait variant={profile.variant} />}
+          />
         </div>
       </div>
     </article>
