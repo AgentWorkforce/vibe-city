@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { fetchSpend, type Spend } from "@/lib/posthog";
+import { fetchRaised } from "@/lib/stripe";
 import type { BudgetResponse } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -17,9 +18,21 @@ const getSpend = unstable_cache(async () => fetchSpend(), ["posthog-spend"], {
   revalidate: 60,
 });
 
+const getRaised = unstable_cache(async () => fetchRaised(), ["stripe-raised"], {
+  revalidate: 60,
+});
+
 export async function GET() {
   const goalUsd = envNumber("FUNDING_GOAL_USD", 500000);
-  const raisedUsd = envNumber("FUNDING_RAISED_USD", 0);
+
+  let raisedUsd = envNumber("FUNDING_RAISED_USD", 0);
+  if (process.env.STRIPE_SECRET_KEY) {
+    try {
+      raisedUsd = await getRaised();
+    } catch {
+      // stripe unreachable: keep the env fallback rather than break the gauge
+    }
+  }
 
   let spend = ZERO_SPEND;
   if (process.env.POSTHOG_API_KEY) {

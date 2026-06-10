@@ -36,6 +36,7 @@ Copy `.env.example` to `.env.local` and fill in:
 | --- | --- |
 | `RELAY_WORKSPACE_KEY` | Connects `/api/feed` and `/api/observer` to the Agent Relay workspace. Server-only secret — it is an admin key, never exposed to browsers. |
 | `POSTHOG_API_KEY` | Sources `/api/budget` spend numbers from LLM analytics (zero otherwise). |
+| `STRIPE_SECRET_KEY` | Sources the "raised" total from Stripe (60s cache). Use a restricted, read-only key. Set `STRIPE_PAYMENT_LINK_ID` (plink_…) to count only the FUND link's purchases. Falls back to `FUNDING_RAISED_USD`. |
 
 The FUND button payment URL is hardcoded in `src/components/FundButton.tsx`.
 
