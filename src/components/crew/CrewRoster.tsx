@@ -1,7 +1,7 @@
 "use client";
 
 import { useFeed } from "@/hooks/useFeed";
-import { DossierCard } from "./DossierCard";
+import { DossierPanel } from "./DossierPanel";
 
 export function CrewRoster() {
   const { feed } = useFeed();
@@ -15,9 +15,9 @@ export function CrewRoster() {
           ? `${onDuty} of ${agents.length} agents on duty`
           : "Assembling the crew…"}
       </p>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {agents.map((agent) => (
-          <DossierCard key={agent.name} agent={agent} />
+      <div className="space-y-8">
+        {agents.map((agent, i) => (
+          <DossierPanel key={agent.name} agent={agent} index={i} />
         ))}
       </div>
     </div>

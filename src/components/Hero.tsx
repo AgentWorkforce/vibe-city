@@ -1,39 +1,47 @@
 import { FundButton } from "./FundButton";
-import { SunsetSky } from "./scene/SunsetSky";
-import { PalmSilhouettes } from "./scene/PalmSilhouettes";
+import { PosterScene } from "./scene/PosterScene";
 
 export function Hero() {
   const gameRepo =
     process.env.NEXT_PUBLIC_GAME_REPO_URL ??
     "https://github.com/AgentWorkforce/open-world-game";
   return (
-    <section className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden text-center">
-      <SunsetSky />
-      <PalmSilhouettes />
-      <div className="scrim-b absolute inset-x-0 bottom-0 h-2/5" />
+    <section className="relative flex min-h-svh flex-col items-center overflow-hidden text-center">
+      <PosterScene />
 
-      <div className="relative z-10 px-4 pb-24 pt-16">
-        <p className="mb-4 font-display text-base font-bold uppercase tracking-[0.5em] text-cream/90 sm:text-lg">
-          <span className="text-gold">G</span>rand · <span className="text-gold">T</span>heft ·{" "}
-          <span className="text-gold">A</span>utocomplete <span className="text-cream/60">presents</span>
-        </p>
-        <h1 className="leading-none">
-          <span className="block font-display text-[20vw] font-black uppercase tracking-tight text-ink drop-shadow-[0_2px_0_rgba(245,239,230,0.35)] sm:text-[11rem]">
-            Vibe
-          </span>
-          <span className="neon-glow block font-neon text-[12vw] text-cream sm:text-[7rem]">
-            City
+      {/* stacked key-art logo */}
+      <div className="relative z-10 px-4 pt-14 sm:pt-16">
+        <h1 className="logo-stack font-logo lowercase leading-[0.92]">
+          <span className="block text-[15vw] sm:text-[6.5rem]">grand</span>
+          <span className="block text-[15vw] sm:text-[6.5rem]">theft</span>
+          <span className="block text-[6.2vw] tracking-[0.04em] sm:text-[2.7rem]">
+            autocomplete
           </span>
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-balance text-lg font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-xl">
+      </div>
+
+      {/* outlined city mark + cta, anchored to the bottom of the scene */}
+      <div className="relative z-10 mt-auto px-4 pb-16">
+        <div
+          aria-hidden
+          className="absolute -inset-x-24 -top-10 bottom-0 -z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 85% at 50% 60%, rgba(5,5,5,0.85), rgba(5,5,5,0.4) 60%, transparent 78%)",
+          }}
+        />
+        <p className="outline-mark font-display text-[11vw] font-black uppercase tracking-[0.02em] leading-none sm:text-[6.5rem] sm:tracking-[0.06em]">
+          Vibe City
+        </p>
+        <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
           An open world to rival the real thing. Built by AI agents.
           <br />
           Live, in public. Open source, beginning to end.
         </p>
-        <div className="mt-10">
+        <div className="mt-8">
           <FundButton />
         </div>
-        <p className="mt-5 text-sm text-cream/70">
+        <p className="mt-5 text-sm text-cream/70 [text-shadow:0_1px_8px_rgba(5,5,5,0.8)]">
           Every dollar becomes API tokens. Tokens become a city.{" "}
           <a
             href={gameRepo}
@@ -44,10 +52,6 @@ export function Hero() {
             Watch the code land →
           </a>
         </p>
-      </div>
-
-      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-cream/60">
-        <span className="block animate-bounce text-2xl">↓</span>
       </div>
     </section>
   );

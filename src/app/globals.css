@@ -17,8 +17,33 @@
   --color-status-offline: #6b7280;
 
   --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-logo: var(--font-bowlby), "Arial Black", sans-serif;
   --font-neon: var(--font-monoton), cursive;
   --font-body: var(--font-archivo), system-ui, sans-serif;
+
+  --color-periwinkle: #7d8df0;
+  --color-lavender: #b3a5ef;
+  --color-blush: #efc8da;
+  --color-sand: #fdf0d5;
+  --color-aqua: #7fd4d4;
+  --color-indigo: #3d3473;
+}
+
+/* stacked key-art logo: cream slab letters with indigo depth */
+.logo-stack {
+  color: #fdf6e9;
+  text-shadow:
+    0 3px 0 rgba(61, 52, 115, 0.55),
+    0 8px 22px rgba(61, 52, 115, 0.35);
+}
+
+/* outlined wordmark like a neon sign tube */
+.outline-mark {
+  color: transparent;
+  -webkit-text-stroke: 2.5px #fdf6e9;
+  text-shadow:
+    0 0 14px rgba(253, 246, 233, 0.45),
+    0 0 44px rgba(255, 197, 92, 0.25);
 }
 
 body {
