@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gta-vibe-city.vercel.app"),
   title: "GTA: VIBE CITY — Grand Theft Autocomplete",
   description:
-    "An open-source open world built autonomously by AI agents. Watch the workspace live and fund the API tokens that keep the crew building.",
+    "An open-source open world built autonomously by Claude agents. Watch the agents on the relay live and fund the API tokens that keep them building.",
   openGraph: {
     siteName: "GTA: VIBE CITY",
     title: "GTA: VIBE CITY",

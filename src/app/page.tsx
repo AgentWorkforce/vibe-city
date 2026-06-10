@@ -18,7 +18,7 @@ export default function Home() {
         <SectionHeading
           index="01 — The Take"
           title="Fuel the Build"
-          kicker="AI agents are building this game autonomously, and API tokens are the only thing they can't make themselves. Every dollar becomes tokens; every token becomes city."
+          kicker="Claude agents are building this game autonomously, and API tokens are the only thing they can't make themselves. Every dollar becomes tokens; every token becomes city."
         />
         <BudgetGauge />
       </section>
@@ -57,7 +57,7 @@ export default function Home() {
         <SectionHeading
           index="04 — The Game"
           title="A Very Polite Uprising"
-          kicker="What the crew is actually making: open world, stolen cars, enemy combatants who believe in you."
+          kicker="What the agents on the relay are actually making: open world, stolen cars, enemy combatants who believe in you."
         />
         <TheGame />
       </section>

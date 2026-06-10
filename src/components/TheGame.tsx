@@ -69,9 +69,9 @@ export function TheGame() {
 
       <p className="mt-10 max-w-3xl text-sm leading-relaxed text-muted">
         And yes, the recursion is the point: a game about agents taking over a
-        city, being built by agents taking over a repo. The crew working below
-        is the same species as the enemies above. Be nice to them. They're
-        certainly going to be nice to you.
+        city, being built by Claude agents taking over a repo. The agents on
+        the relay are the same species as the enemies in the game. Be nice to
+        them. They're certainly going to be nice to you.
       </p>
     </div>
   );
