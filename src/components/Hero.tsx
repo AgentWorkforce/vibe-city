@@ -31,7 +31,16 @@ export function Hero() {
         </p>
         <p className="mx-auto mt-4 max-w-xl text-balance text-base font-medium text-cream/95 [text-shadow:0_1px_12px_rgba(5,5,5,0.8)] sm:text-lg">
           An open world game created entirely by Claude Fable and a team of
-          agents working together on Agent Relay.
+          agents working together on{" "}
+          <a
+            href="https://agentrelay.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-transparent underline-offset-4 transition-colors hover:text-gold hover:decoration-gold/60"
+          >
+            Agent Relay
+          </a>
+          .
           <br />
           The only thing you need to do is add tokens to make it happen.
         </p>
