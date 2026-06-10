@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #050505;
+  --color-panel: #0c0c0e;
+  --color-panel-2: #121216;
+  --color-cream: #f5efe6;
+  --color-muted: #97a0aa;
+  --color-magenta: #ff2e88;
+  --color-orange: #ff6b35;
+  --color-gold: #ffc55c;
+  --color-teal: #14454f;
+  --color-navy: #0e2236;
+  --color-status-active: #4ade80;
+  --color-status-idle: #fbbf24;
+  --color-status-blocked: #f87171;
+  --color-status-offline: #6b7280;
+
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-neon: var(--font-monoton), cursive;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-magenta);
+  color: var(--color-ink);
+}
+
+/* signature sunset gradient */
+.sunset {
+  background: linear-gradient(
+    165deg,
+    #ff2e88 0%,
+    #ff6b35 38%,
+    #ffc55c 58%,
+    #14454f 86%,
+    #0e2236 100%
+  );
+}
+
+.sunset-text {
+  background: linear-gradient(120deg, #ff2e88 10%, #ff6b35 45%, #ffc55c 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* black scrim for text over art */
+.scrim-b {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(5, 5, 5, 0.7) 55%,
+    #050505 100%
+  );
+}
+
+.neon-glow {
+  text-shadow:
+    0 0 8px rgba(255, 46, 136, 0.7),
+    0 0 28px rgba(255, 107, 53, 0.45),
+    0 0 60px rgba(255, 197, 92, 0.3);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-dot { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* thin gold rule used in section headings and dossier frames */
+.rule-gold {
+  background: linear-gradient(90deg, transparent, rgba(255, 197, 92, 0.6), transparent);
+  height: 1px;
+}
+
+/* feed scrollbars */
+.feed-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 197, 92, 0.25) transparent;
+}
+
+/* markdown inside feed messages */
+.feed-md :is(p, ul, ol) { margin: 0.25rem 0; }
+.feed-md ul { list-style: disc; padding-left: 1.25rem; }
+.feed-md ol { list-style: decimal; padding-left: 1.25rem; }
+.feed-md code {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.85em;
+}
+.feed-md pre {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  overflow-x: auto;
+  margin: 0.4rem 0;
+}
+.feed-md pre code { background: none; padding: 0; }
+.feed-md a { color: var(--color-gold); text-decoration: underline; }
+.feed-md strong { color: var(--color-cream); }
