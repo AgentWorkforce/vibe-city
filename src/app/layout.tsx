@@ -22,7 +22,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vibe-city.vercel.app"),
+  metadataBase: new URL("https://vibe-city-will-washburn-s-projects.vercel.app"),
   title: "VIBE CITY — can Claude build an open world game?",
   description:
     "An open-source open world built autonomously by Claude agents. Watch the agents on the relay live and fund the API tokens that keep them building.",
