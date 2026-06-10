@@ -25,12 +25,13 @@ const getRaised = unstable_cache(async () => fetchRaised(), ["stripe-raised"], {
 export async function GET() {
   const goalUsd = envNumber("FUNDING_GOAL_USD", 500000);
 
-  let raisedUsd = envNumber("FUNDING_RAISED_USD", 0);
+  // baseline (pre-Stripe pledges) + live Stripe purchases on top
+  let raisedUsd = envNumber("FUNDING_RAISED_USD", 33_475);
   if (process.env.STRIPE_SECRET_KEY) {
     try {
-      raisedUsd = await getRaised();
+      raisedUsd += await getRaised();
     } catch {
-      // stripe unreachable: keep the env fallback rather than break the gauge
+      // stripe unreachable: show the baseline rather than break the gauge
     }
   }
 
