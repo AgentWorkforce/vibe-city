@@ -15,16 +15,9 @@ export function Hero() {
         fallback={<PosterScene />}
       />
 
-      {/* stacked key-art logo */}
-      <div className="relative z-10 px-4 pt-14 sm:pt-16">
-        <h1 className="logo-stack font-logo lowercase leading-[1.05]">
-          <span className="block text-[6vw] sm:text-[2.6rem]">can claude build</span>
-          <span className="block text-[6vw] sm:text-[2.6rem]">an open world game?</span>
-        </h1>
-      </div>
-
       {/* outlined city mark + cta, anchored to the bottom of the scene */}
       <div className="relative z-10 mt-auto px-4 pb-16">
+        <h1 className="sr-only">VIBE CITY — can Claude build an open world game?</h1>
         <div
           aria-hidden
           className="absolute -inset-x-24 -top-10 bottom-0 -z-10"
