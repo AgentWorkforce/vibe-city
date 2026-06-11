@@ -1,4 +1,5 @@
 import { unstable_cache } from "next/cache";
+import { fromBridge } from "@/lib/bridge";
 import { relay, toFeedResponse } from "@/lib/relay";
 import type { FeedResponse } from "@/lib/types";
 
@@ -22,11 +23,19 @@ const getLiveFeed = unstable_cache(
   { revalidate: 4 },
 );
 
+const getBridgeFeed = unstable_cache(
+  async () => fromBridge<FeedResponse>("/feed"),
+  ["bridge-feed"],
+  { revalidate: 2 },
+);
+
 export async function GET() {
   try {
-    const body = process.env.RELAY_WORKSPACE_KEY
-      ? await getLiveFeed()
-      : { ...EMPTY, generatedAt: new Date().toISOString() };
+    const body =
+      (process.env.BRIDGE_URL ? await getBridgeFeed() : null) ??
+      (process.env.RELAY_WORKSPACE_KEY
+        ? await getLiveFeed()
+        : { ...EMPTY, generatedAt: new Date().toISOString() });
     return Response.json(body, {
       headers: { "Cache-Control": "s-maxage=3, stale-while-revalidate=10" },
     });

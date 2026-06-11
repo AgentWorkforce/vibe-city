@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "bridge": "node bridge/server.mjs"
   },
   "dependencies": {
     "@agent-relay/sdk": "^8.3.5",

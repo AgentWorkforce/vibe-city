@@ -68,3 +68,19 @@ in-repo illustration when the file is missing — partial art sets never break
 the page. A fully offline painterly pipeline also exists
 (`scripts/render-plates.mjs` + `scripts/paint.py`, stroke-based rendering
 after Hertzmann '98) if you need art with zero external tooling.
+
+## Spend metering (local cron → gist)
+
+The workers run locally, so [burn](https://github.com/AgentWorkforce/burn)
+meters their sessions on this machine. A cron pushes the totals to a gist the
+site reads:
+
+```cron
+*/5 * * * * BURN_GIST_ID=51b3c4f364e68c6f86b23c5fdd147aa6 BURN_PROJECT=/Users/will/Projects/AgentWorkforce/open-world-game node scripts/push-burn.mjs >> /tmp/push-burn.log 2>&1
+```
+
+Vercel env: `SPEND_FEED_URL=https://gist.githubusercontent.com/willwashburn/51b3c4f364e68c6f86b23c5fdd147aa6/raw/spend.json`
+
+Spend source precedence in `/api/budget`: bridge → `SPEND_FEED_URL` → PostHog → zero.
+An optional always-on bridge (`npm run bridge`) exists in `bridge/server.mjs`
+for realtime agent status + spend when you want to graduate from cron.
