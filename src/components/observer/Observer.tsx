@@ -58,7 +58,10 @@ export function Observer() {
   const searchParams = useSearchParams();
   const channel = searchParams.get("channel") ?? "all";
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [pinned, setPinned] = useState(true);
+  // arriving on a message permalink: don't pin to bottom, let the deep link scroll
+  const [pinned, setPinned] = useState(
+    () => typeof window === "undefined" || !window.location.hash.startsWith("#msg-"),
+  );
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const scrolledToHash = useRef(false);
 
