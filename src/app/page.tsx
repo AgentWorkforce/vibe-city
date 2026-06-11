@@ -37,9 +37,9 @@ export default function Home() {
 
       <section id="plan" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
-          index="04 — The Plan"
-          title="How This Gets Built"
-          kicker="One owner agent, an endless loop, and a city that gets bigger every time it runs."
+          index="04 — How This Gets Built"
+          title="The Plan Is Excellence"
+          kicker="Claude Fable is the piece that makes it all work as the orchestrator — backed by a squad of agents that pull their weight."
         />
         <HowItWorks />
       </section>
