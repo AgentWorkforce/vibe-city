@@ -15,14 +15,20 @@ export function relay(): AgentRelay {
   }));
 }
 
-const STATUSES: AgentStatus[] = ["active", "idle", "blocked", "waiting", "offline"];
+const WORK_STATUSES: AgentStatus[] = ["active", "idle", "blocked", "waiting"];
+const OFFLINE_AFTER_MS = 30 * 60 * 1000;
 
-function toStatus(status: string | undefined): AgentStatus {
-  // The workspace reports richer statuses than presence; anything unknown
-  // (e.g. "online") is treated as active so the roster errs lively.
-  if (STATUSES.includes(status as AgentStatus)) return status as AgentStatus;
+function toStatus(status: string | undefined, lastSeenAt?: string): AgentStatus {
+  // Rich work states pass through when the workspace reports them.
+  if (WORK_STATUSES.includes(status as AgentStatus)) return status as AgentStatus;
   if (status === "online") return "active";
-  return "offline";
+  // "offline" here is socket presence, not work state — agents posting over
+  // REST/MCP never hold a socket. Trust recent activity instead and only go
+  // offline after a long silence.
+  if (lastSeenAt && Date.now() - new Date(lastSeenAt).getTime() > OFFLINE_AFTER_MS) {
+    return "offline";
+  }
+  return "active";
 }
 
 export function toFeedResponse(
@@ -50,7 +56,7 @@ export function toFeedResponse(
       role:
         a.persona ??
         (typeof a.metadata?.role === "string" ? a.metadata.role : undefined),
-      status: toStatus(a.status),
+      status: toStatus(a.status, a.lastSeenAt),
       lastSeen: a.lastSeenAt ?? new Date().toISOString(),
     }));
 
