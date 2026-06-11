@@ -42,9 +42,56 @@ const payload = {
   updatedAt: new Date().toISOString(),
 };
 
+// full breakdown for the /burn page
+let hotspots = {};
+try {
+  const hargs = ["hotspots", "--json"];
+  if (process.env.BURN_PROJECT) hargs.push("--project", process.env.BURN_PROJECT);
+  if (process.env.BURN_SINCE) hargs.push("--since", process.env.BURN_SINCE);
+  const h = JSON.parse(
+    execFileSync("burn", hargs, { maxBuffer: 16 * 1024 * 1024, encoding: "utf8" }),
+  );
+  hotspots = {
+    files: (h.files ?? [])
+      .slice()
+      .sort((a, b) => (b.totalCost ?? 0) - (a.totalCost ?? 0))
+      .slice(0, 15)
+      .map((f) => ({ path: f.path, totalCost: f.totalCost, toolCallCount: f.toolCallCount })),
+    sessions: (h.sessions ?? [])
+      .slice()
+      .sort((a, b) => (b.grandCost ?? 0) - (a.grandCost ?? 0))
+      .slice(0, 8)
+      .map((s) => ({ sessionId: s.sessionId, grandCost: s.grandCost })),
+  };
+} catch (err) {
+  console.error("hotspots skipped:", err.message);
+}
+
+const detail = {
+  updatedAt: payload.updatedAt,
+  turns: data.turns ?? 0,
+  totals: data.totalCost ?? {},
+  byModel: (data.byModel ?? []).map((m) => ({
+    model: m.model,
+    turns: m.turns,
+    usage: m.usage,
+    cost: m.cost,
+  })),
+  hotspots,
+};
+
 execFileSync(
   "gh",
-  ["api", "-X", "PATCH", `gists/${GIST_ID}`, "-f", `files[spend.json][content]=${JSON.stringify(payload, null, 2)}`],
+  [
+    "api",
+    "-X",
+    "PATCH",
+    `gists/${GIST_ID}`,
+    "-f",
+    `files[spend.json][content]=${JSON.stringify(payload, null, 2)}`,
+    "-f",
+    `files[burn.json][content]=${JSON.stringify(detail, null, 2)}`,
+  ],
   { stdio: ["ignore", "ignore", "inherit"] },
 );
 console.log(`pushed ${payload.updatedAt}: $${payload.spentUsd}, ${payload.generations} turns`);

@@ -60,11 +60,14 @@ export function BudgetGauge() {
         />
       </div>
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm text-muted">
-        <span>
+        <a href="/burn" className="group">
           <span className="text-gold">{formatTokens(tokens)}</span> tokens burned
           across <span className="text-cream/80">{budget?.generations ?? 0}</span>{" "}
-          model calls
-        </span>
+          model calls{" "}
+          <span className="text-gold/70 underline-offset-4 group-hover:underline">
+            — full breakdown →
+          </span>
+        </a>
         <span className="text-xs uppercase tracking-[0.2em]">live numbers</span>
       </div>
 
