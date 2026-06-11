@@ -75,25 +75,55 @@ try {
   const h = JSON.parse(
     execFileSync("burn", hargs, { maxBuffer: 16 * 1024 * 1024, encoding: "utf8" }),
   );
+
+  const topSessions = (h.sessions ?? [])
+    .slice()
+    .sort((a, b) => (b.grandCost ?? 0) - (a.grandCost ?? 0))
+    .slice(0, 12);
+
+  // which models touched which files: per-session hotspots, joined on the
+  // session's model from `burn sessions list`
+  const fileModels = new Map(); // relative path -> Set<model>
+  for (const s of topSessions) {
+    const model = sessionModels.get(s.sessionId);
+    if (!model) continue;
+    try {
+      const sh = JSON.parse(
+        execFileSync(
+          "burn",
+          ["hotspots", "--json", "--session", s.sessionId, ...(root ? ["--project", root] : [])],
+          { maxBuffer: 16 * 1024 * 1024, encoding: "utf8" },
+        ),
+      );
+      for (const f of sh.files ?? []) {
+        const p = relativize(f.path);
+        if (!fileModels.has(p)) fileModels.set(p, new Set());
+        fileModels.get(p).add(model);
+      }
+    } catch {
+      // per-session attribution is best-effort
+    }
+  }
+
   hotspots = {
     files: (h.files ?? [])
       .slice()
       .sort((a, b) => (b.totalCost ?? 0) - (a.totalCost ?? 0))
       .slice(0, 15)
-      .map((f) => ({
-        path: relativize(f.path),
-        totalCost: f.totalCost,
-        toolCallCount: f.toolCallCount,
-      })),
-    sessions: (h.sessions ?? [])
-      .slice()
-      .sort((a, b) => (b.grandCost ?? 0) - (a.grandCost ?? 0))
-      .slice(0, 8)
-      .map((s) => ({
-        sessionId: s.sessionId,
-        label: sessionModels.get(s.sessionId) || "session",
-        grandCost: s.grandCost,
-      })),
+      .map((f) => {
+        const p = relativize(f.path);
+        return {
+          path: p,
+          totalCost: f.totalCost,
+          toolCallCount: f.toolCallCount,
+          models: [...(fileModels.get(p) ?? [])].sort(),
+        };
+      }),
+    sessions: topSessions.slice(0, 8).map((s) => ({
+      sessionId: s.sessionId,
+      label: sessionModels.get(s.sessionId) || "session",
+      grandCost: s.grandCost,
+    })),
   };
 } catch (err) {
   console.error("hotspots skipped:", err.message);

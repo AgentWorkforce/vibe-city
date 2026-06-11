@@ -30,7 +30,12 @@ type BurnDetail = {
     cost?: CostBlock;
   }>;
   hotspots: {
-    files?: Array<{ path: string; totalCost?: number; toolCallCount?: number }>;
+    files?: Array<{
+      path: string;
+      totalCost?: number;
+      toolCallCount?: number;
+      models?: string[];
+    }>;
     sessions?: Array<{ sessionId: string; label?: string; grandCost?: number }>;
   };
 };
@@ -131,6 +136,7 @@ export function BurnBreakdown() {
               <thead>
                 <tr className="border-b border-white/10 text-xs uppercase tracking-[0.2em] text-muted">
                   <th className="px-4 py-3">File</th>
+                  <th className="px-4 py-3">Models</th>
                   <th className="px-4 py-3 text-right">Tool calls</th>
                   <th className="px-4 py-3 text-right">Attributed cost</th>
                 </tr>
@@ -140,6 +146,22 @@ export function BurnBreakdown() {
                   <tr key={f.path} className="border-b border-white/5 last:border-0">
                     <td className="max-w-md truncate px-4 py-2.5 font-mono text-xs text-cream/85">
                       {f.path}
+                    </td>
+                    <td className="px-4 py-2.5">
+                      {(f.models ?? []).length > 0 ? (
+                        <span className="flex flex-wrap gap-1">
+                          {f.models!.map((m) => (
+                            <span
+                              key={m}
+                              className="rounded-full border border-white/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-cream/75"
+                            >
+                              {m}
+                            </span>
+                          ))}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-muted/60">—</span>
+                      )}
                     </td>
                     <td className="px-4 py-2.5 text-right text-muted">{f.toolCallCount ?? 0}</td>
                     <td className="px-4 py-2.5 text-right text-gold">{usd(f.totalCost)}</td>
