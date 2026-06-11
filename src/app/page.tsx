@@ -29,8 +29,8 @@ export default function Home() {
 
       <section id="take" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
-          index="03 — The Take"
-          title="Fuel the Build"
+          index="03 — Burn Rate"
+          title="The Cost"
           kicker="Claude agents are building this game autonomously, and API tokens are the only thing they can't make themselves. Every dollar becomes tokens; every token becomes city."
         />
         <BudgetGauge />
