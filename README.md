@@ -76,7 +76,7 @@ meters their sessions on this machine. A cron pushes the totals to a gist the
 site reads:
 
 ```cron
-*/5 * * * * BURN_GIST_ID=51b3c4f364e68c6f86b23c5fdd147aa6 BURN_PROJECT=/Users/will/Projects/AgentWorkforce/open-world-game node scripts/push-burn.mjs >> /tmp/push-burn.log 2>&1
+*/5 * * * * BURN_GIST_ID=51b3c4f364e68c6f86b23c5fdd147aa6 BURN_PROJECT=/Users/will/Projects/AgentWorkforce/vibe-city-game node scripts/push-burn.mjs >> /tmp/push-burn.log 2>&1
 ```
 
 Vercel env: `SPEND_FEED_URL=https://gist.githubusercontent.com/willwashburn/51b3c4f364e68c6f86b23c5fdd147aa6/raw/spend.json`
