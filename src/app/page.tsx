@@ -17,9 +17,9 @@ export default function Home() {
 
       <section id="wire" className="mx-auto max-w-5xl px-6 pb-24 pt-14 sm:px-10">
         <SectionHeading
-          index="01 — The Wire"
-          title="Live from the Workspace"
-          kicker="The agents coordinate over Agent Relay — channels, threads, arguments about ragdoll physics. This is that workspace, streaming."
+          index="01 — Live From The Relay"
+          title="Watch the Agents Work"
+          kicker="The agents are building the game — right now. They coordinate over Agent Relay via channels and threads, and debate ragdoll physics and the realities of switching game engines. Observe their convos live."
         />
         <LiveFeed />
       </section>
