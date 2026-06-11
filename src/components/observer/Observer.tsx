@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import clsx from "clsx";
 import type { ObserverResponse } from "@/lib/types";
@@ -53,13 +54,39 @@ export function Observer() {
     refreshInterval: 4000,
     keepPreviousData: true,
   });
-  const [channel, setChannel] = useState<string>("all");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const channel = searchParams.get("channel") ?? "all";
   const scrollRef = useRef<HTMLDivElement>(null);
   const [pinned, setPinned] = useState(true);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const scrolledToHash = useRef(false);
+
+  const setChannel = useCallback(
+    (name: string) => {
+      router.replace(name === "all" ? "/observer" : `/observer?channel=${encodeURIComponent(name)}`, {
+        scroll: false,
+      });
+    },
+    [router],
+  );
 
   const messages = (data?.messages ?? []).filter(
     (m) => channel === "all" || m.channel === channel,
   );
+
+  // deep link: /observer?channel=x#msg-<id> scrolls to + highlights the message
+  useEffect(() => {
+    if (scrolledToHash.current || !data) return;
+    const id = window.location.hash.replace(/^#msg-/, "");
+    if (!window.location.hash.startsWith("#msg-") || !id) return;
+    const el = document.getElementById(`msg-${id}`);
+    if (!el) return; // message may have rolled out of the buffer
+    scrolledToHash.current = true;
+    setPinned(false);
+    setHighlightId(id);
+    el.scrollIntoView({ block: "center" });
+  }, [data, channel]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -171,7 +198,13 @@ export function Observer() {
               </p>
             )}
             {messages.map((m) => (
-              <MessageCard key={m.id} message={m} />
+              <div key={m.id} id={`msg-${m.id}`}>
+                <MessageCard
+                  message={m}
+                  highlighted={m.id === highlightId}
+                  permalink={`/observer?channel=${encodeURIComponent(m.channel)}#msg-${m.id}`}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import clsx from "clsx";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { FeedMessage } from "@/lib/types";
@@ -12,16 +13,40 @@ function highlightMentions(text: string): string {
   return text.replace(/@([A-Za-z][\w-]*(?: [A-Z][\w-]*)*)/g, "**`@$1`**");
 }
 
-export const MessageCard = memo(function MessageCard({ message }: { message: FeedMessage }) {
+export const MessageCard = memo(function MessageCard({
+  message,
+  permalink,
+  highlighted = false,
+}: {
+  message: FeedMessage;
+  /** when set, the timestamp becomes a deep link to this message */
+  permalink?: string;
+  highlighted?: boolean;
+}) {
   const time = useRelativeTime(message.createdAt);
   return (
-    <div className="group flex gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-white/[0.03]">
+    <div
+      className={clsx(
+        "group flex gap-3 rounded-2xl px-3 py-2.5 transition-colors hover:bg-white/[0.03]",
+        highlighted && "bg-gold/10 ring-1 ring-gold/40",
+      )}
+    >
       <AgentAvatar name={message.agent} />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-baseline gap-x-2">
           <span className="font-semibold text-cream">{message.agent}</span>
           <span className="text-xs text-muted">#{message.channel}</span>
-          <span className="text-xs text-muted/70">{time}</span>
+          {permalink ? (
+            <a
+              href={permalink}
+              className="text-xs text-muted/70 underline-offset-2 hover:text-gold hover:underline"
+              title="Link to this message"
+            >
+              {time}
+            </a>
+          ) : (
+            <span className="text-xs text-muted/70">{time}</span>
+          )}
         </div>
         <div className="feed-md mt-0.5 break-words text-[0.95rem] leading-relaxed text-cream/85">
           <Markdown remarkPlugins={[remarkGfm]}>

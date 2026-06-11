@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Observer } from "@/components/observer/Observer";
 
 export const metadata: Metadata = {
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function ObserverPage() {
-  return <Observer />;
+  return (
+    <Suspense>
+      <Observer />
+    </Suspense>
+  );
 }
