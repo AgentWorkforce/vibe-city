@@ -20,7 +20,7 @@ export function FundButton({ size = "lg" }: { size?: "lg" | "md" }) {
           size === "lg" ? "px-10 py-5 text-2xl sm:px-14 sm:text-4xl" : "px-6 py-3 text-xl",
         )}
       >
-        Fund API Tokens
+        Donate $ for Tokens
       </span>
     </a>
   );

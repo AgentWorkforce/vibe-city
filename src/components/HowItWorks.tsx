@@ -13,7 +13,7 @@ const STEPS = [
   },
   {
     title: "Fuel is the only constraint",
-    body: "The agents work as long as there are API tokens to burn. The FUND button buys tokens; the meter shows the burn. When the tank is dry, the city sleeps.",
+    body: "The agents work as long as there are API tokens to burn. The DONATE button buys tokens; the meter shows the burn. When the tank is dry, the city sleeps.",
   },
 ];
 
