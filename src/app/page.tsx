@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { GameplayVideo } from "@/components/GameplayVideo";
+import { EmailSignup } from "@/components/EmailSignup";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TheGame } from "@/components/TheGame";
 import { BudgetGauge } from "@/components/BudgetGauge";
@@ -75,6 +76,8 @@ export default function Home() {
         name="The Skies"
         line="Steal a seaplane. The tower clears you for takeoff anyway — they're just happy you asked."
       />
+
+      <EmailSignup />
 
       <PlacePanel
         art="scene-beach.jpg"
