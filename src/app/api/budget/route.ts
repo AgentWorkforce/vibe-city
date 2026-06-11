@@ -57,8 +57,8 @@ const getFeedSpend = unstable_cache(
 export async function GET() {
   const goalUsd = envNumber("FUNDING_GOAL_USD", 500000);
 
-  // baseline (pre-Stripe pledges) + live Stripe purchases on top
-  let raisedUsd = envNumber("FUNDING_RAISED_USD", 33_475);
+  // optional offline-pledge baseline + live Stripe purchases on top
+  let raisedUsd = envNumber("FUNDING_RAISED_USD", 0);
   if (process.env.STRIPE_SECRET_KEY) {
     try {
       raisedUsd += await getRaised();

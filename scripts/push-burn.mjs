@@ -43,10 +43,34 @@ const payload = {
 };
 
 // full breakdown for the /burn page
+const root = process.env.BURN_PROJECT;
+const home = process.env.HOME ?? "";
+
+function relativize(p) {
+  if (root && p.startsWith(`${root}/`)) return p.slice(root.length + 1);
+  if (home && p.startsWith(`${home}/`)) return `~/${p.slice(home.length + 1)}`;
+  return p;
+}
+
+// sessionId -> "model (+model)" labels
+const sessionModels = new Map();
+try {
+  const sargs = ["sessions", "list", "--json", "--since", "30d", "--limit", "200"];
+  if (root) sargs.push("--project", root);
+  const sessions = JSON.parse(
+    execFileSync("burn", sargs, { maxBuffer: 16 * 1024 * 1024, encoding: "utf8" }),
+  );
+  for (const s of Array.isArray(sessions) ? sessions : sessions.sessions ?? []) {
+    sessionModels.set(s.sessionId, (s.models ?? []).join(" + "));
+  }
+} catch (err) {
+  console.error("sessions list skipped:", err.message);
+}
+
 let hotspots = {};
 try {
   const hargs = ["hotspots", "--json"];
-  if (process.env.BURN_PROJECT) hargs.push("--project", process.env.BURN_PROJECT);
+  if (root) hargs.push("--project", root);
   if (process.env.BURN_SINCE) hargs.push("--since", process.env.BURN_SINCE);
   const h = JSON.parse(
     execFileSync("burn", hargs, { maxBuffer: 16 * 1024 * 1024, encoding: "utf8" }),
@@ -56,12 +80,20 @@ try {
       .slice()
       .sort((a, b) => (b.totalCost ?? 0) - (a.totalCost ?? 0))
       .slice(0, 15)
-      .map((f) => ({ path: f.path, totalCost: f.totalCost, toolCallCount: f.toolCallCount })),
+      .map((f) => ({
+        path: relativize(f.path),
+        totalCost: f.totalCost,
+        toolCallCount: f.toolCallCount,
+      })),
     sessions: (h.sessions ?? [])
       .slice()
       .sort((a, b) => (b.grandCost ?? 0) - (a.grandCost ?? 0))
       .slice(0, 8)
-      .map((s) => ({ sessionId: s.sessionId, grandCost: s.grandCost })),
+      .map((s) => ({
+        sessionId: s.sessionId,
+        label: sessionModels.get(s.sessionId) || "session",
+        grandCost: s.grandCost,
+      })),
   };
 } catch (err) {
   console.error("hotspots skipped:", err.message);

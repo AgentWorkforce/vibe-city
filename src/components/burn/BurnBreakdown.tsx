@@ -31,7 +31,7 @@ type BurnDetail = {
   }>;
   hotspots: {
     files?: Array<{ path: string; totalCost?: number; toolCallCount?: number }>;
-    sessions?: Array<{ sessionId: string; grandCost?: number }>;
+    sessions?: Array<{ sessionId: string; label?: string; grandCost?: number }>;
   };
 };
 
@@ -162,7 +162,12 @@ export function BurnBreakdown() {
                 key={s.sessionId}
                 className="flex items-center justify-between rounded-lg border border-white/10 bg-panel px-4 py-3"
               >
-                <span className="truncate font-mono text-xs text-muted">{s.sessionId}</span>
+                <span className="truncate text-sm text-cream/90">
+                  {s.label ?? "session"}{" "}
+                  <span className="font-mono text-xs text-muted">
+                    ({s.sessionId.slice(0, 8)})
+                  </span>
+                </span>
                 <span className="ml-4 font-semibold text-gold">{usd(s.grandCost)}</span>
               </div>
             ))}
