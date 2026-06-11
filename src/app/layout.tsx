@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Bowlby_One_SC, Archivo } from "next/font/google";
 import { GrainOverlay } from "@/components/scene/GrainOverlay";
+import { PostHogInit } from "@/components/PostHogInit";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`${bigShoulders.variable} ${bowlby.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <PostHogInit />
         {children}
         <GrainOverlay />
       </body>

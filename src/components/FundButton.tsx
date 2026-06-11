@@ -1,4 +1,7 @@
+"use client";
+
 import clsx from "clsx";
+import posthog from "posthog-js";
 
 const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/dRm28s0qJ6fX4blaU61ZS00";
 
@@ -8,6 +11,7 @@ export function FundButton({ size = "lg" }: { size?: "lg" | "md" }) {
       href={STRIPE_PAYMENT_LINK}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => posthog.capture("donate_click", { size })}
       className={clsx(
         "group relative inline-block rounded-xl p-[3px] transition-transform hover:scale-[1.03] focus-visible:scale-[1.03]",
         "bg-[linear-gradient(120deg,#ff2e88,#ff6b35,#ffc55c)]",
