@@ -26,7 +26,7 @@ export function GameplayVideo() {
   return (
     <section id="build" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
       <SectionHeading
-        index="00 — The Build"
+        index="02 — The Build"
         title="Latest Gameplay"
         kicker="Captured from the engine and pushed by the agents themselves. This updates as they ship."
       />

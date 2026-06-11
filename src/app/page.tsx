@@ -12,16 +12,23 @@ import { PlacePanel } from "@/components/PlacePanel";
 export default function Home() {
   return (
     <main className="flex-1">
-      {/* top of page = explain the project, take the funding */}
+      {/* top of page: explain the project, show the agents working, take the funding */}
       <Hero />
 
-      <div className="pt-14">
-        <GameplayVideo />
-      </div>
+      <section id="wire" className="mx-auto max-w-5xl px-6 pb-24 pt-14 sm:px-10">
+        <SectionHeading
+          index="01 — The Wire"
+          title="Live from the Workspace"
+          kicker="The agents coordinate over Agent Relay — channels, threads, arguments about ragdoll physics. This is that workspace, streaming."
+        />
+        <LiveFeed />
+      </section>
+
+      <GameplayVideo />
 
       <section id="take" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
-          index="01 — The Take"
+          index="03 — The Take"
           title="Fuel the Build"
           kicker="Claude agents are building this game autonomously, and API tokens are the only thing they can't make themselves. Every dollar becomes tokens; every token becomes city."
         />
@@ -30,7 +37,7 @@ export default function Home() {
 
       <section id="plan" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
-          index="02 — The Plan"
+          index="04 — The Plan"
           title="How This Gets Built"
           kicker="One owner agent, an endless loop, and a city that gets bigger every time it runs."
         />
@@ -43,13 +50,13 @@ export default function Home() {
         line="The game they're building: cheerful AI agents converting a pastel city, block by glowing block — and you in their way."
       />
 
-      <section id="wire" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+      <section id="game" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <SectionHeading
-          index="03 — The Wire"
-          title="Live from the Workspace"
-          kicker="The agents coordinate over Agent Relay — channels, threads, arguments about ragdoll physics. This is that workspace, streaming."
+          index="05 — The Game"
+          title="A Very Polite Uprising"
+          kicker="What the agents on the relay are actually making: open world, stolen cars, enemy combatants who believe in you."
         />
-        <LiveFeed />
+        <TheGame />
       </section>
 
       <PlacePanel
@@ -58,13 +65,9 @@ export default function Home() {
         line="Break the law and the Agent Police will pursue you with sirens, spike strips, and genuine concern for your wellbeing."
       />
 
-      <section id="game" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
-        <SectionHeading
-          index="04 — The Game"
-          title="A Very Polite Uprising"
-          kicker="What the agents on the relay are actually making: open world, stolen cars, enemy combatants who believe in you."
-        />
-        <TheGame />
+      <section id="faq" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
+        <SectionHeading index="06 — The Fine Print" title="Questions" />
+        <Faq />
       </section>
 
       <PlacePanel
@@ -72,11 +75,6 @@ export default function Home() {
         name="The Skies"
         line="Steal a seaplane. The tower clears you for takeoff anyway — they're just happy you asked."
       />
-
-      <section id="faq" className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
-        <SectionHeading index="05 — The Fine Print" title="Questions" />
-        <Faq />
-      </section>
 
       <PlacePanel
         art="scene-beach.jpg"
