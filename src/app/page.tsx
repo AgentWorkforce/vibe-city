@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { GameplayVideo } from "@/components/GameplayVideo";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TheGame } from "@/components/TheGame";
 import { BudgetGauge } from "@/components/BudgetGauge";
@@ -14,7 +15,11 @@ export default function Home() {
       {/* top of page = explain the project, take the funding */}
       <Hero />
 
-      <section id="take" className="mx-auto max-w-5xl px-6 pb-24 pt-14 sm:px-10">
+      <div className="pt-14">
+        <GameplayVideo />
+      </div>
+
+      <section id="take" className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <SectionHeading
           index="01 — The Take"
           title="Fuel the Build"
