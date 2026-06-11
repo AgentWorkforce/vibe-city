@@ -6,7 +6,7 @@ import type { ObserverResponse } from "@/lib/types";
 export const dynamic = "force-dynamic";
 
 const MAX_CHANNELS = 8;
-const PER_CHANNEL = 25;
+const PER_CHANNEL = 100; // upstream page-size cap; older history via /api/history
 
 function empty(): ObserverResponse {
   return {

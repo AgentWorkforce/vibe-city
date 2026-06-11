@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import clsx from "clsx";
-import type { ObserverResponse } from "@/lib/types";
+import type { FeedMessage, ObserverResponse } from "@/lib/types";
 import { MessageCard } from "@/components/feed/MessageCard";
 import { AgentAvatar } from "@/components/feed/AgentAvatar";
 import { useRelativeTime } from "@/hooks/useRelativeTime";
@@ -71,9 +71,47 @@ export function Observer() {
     [router],
   );
 
-  const messages = (data?.messages ?? []).filter(
+  // older pages loaded on demand, keyed by channel
+  const [older, setOlder] = useState<Record<string, FeedMessage[]>>({});
+  const [loadingOlder, setLoadingOlder] = useState(false);
+  const [exhausted, setExhausted] = useState<Record<string, boolean>>({});
+
+  const live = (data?.messages ?? []).filter(
     (m) => channel === "all" || m.channel === channel,
   );
+  const paged = channel === "all" ? [] : (older[channel] ?? []);
+  const liveIds = new Set(live.map((m) => m.id));
+  const messages = [...paged.filter((m) => !liveIds.has(m.id)), ...live];
+
+  async function loadOlder() {
+    const oldest = messages[0];
+    if (!oldest || channel === "all" || loadingOlder) return;
+    setLoadingOlder(true);
+    const el = scrollRef.current;
+    const prevHeight = el?.scrollHeight ?? 0;
+    try {
+      const res = await fetch(
+        `/api/history?channel=${encodeURIComponent(channel)}&before=${encodeURIComponent(oldest.id)}`,
+      );
+      const body: { messages: FeedMessage[] } = await res.json();
+      if (body.messages.length === 0) {
+        setExhausted((e) => ({ ...e, [channel]: true }));
+      } else {
+        setPinned(false);
+        setOlder((o) => {
+          const seen = new Set((o[channel] ?? []).map((m) => m.id));
+          const fresh = body.messages.filter((m) => !seen.has(m.id));
+          return { ...o, [channel]: [...fresh, ...(o[channel] ?? [])] };
+        });
+        // keep the viewport anchored on the message the user was reading
+        requestAnimationFrame(() => {
+          if (el) el.scrollTop += el.scrollHeight - prevHeight;
+        });
+      }
+    } finally {
+      setLoadingOlder(false);
+    }
+  }
 
   // deep link: /observer?channel=x#msg-<id> scrolls to + highlights the message
   useEffect(() => {
@@ -196,6 +234,17 @@ export function Observer() {
               <p className="px-4 py-10 text-center text-muted">
                 Nothing here yet — the workspace is quiet.
               </p>
+            )}
+            {channel !== "all" && messages.length > 0 && !exhausted[channel] && (
+              <div className="pb-2 text-center">
+                <button
+                  onClick={loadOlder}
+                  disabled={loadingOlder}
+                  className="rounded-full border border-white/15 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted hover:border-gold/40 hover:text-gold disabled:opacity-50"
+                >
+                  {loadingOlder ? "Loading…" : "Load older messages"}
+                </button>
+              </div>
             )}
             {messages.map((m) => (
               <div key={m.id} id={`msg-${m.id}`}>
